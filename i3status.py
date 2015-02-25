@@ -40,6 +40,7 @@ ICON_BATTERY   = ''
 ICON_PLUG      = ' '
 ICON_WIFI      = ' '
 ICON_RAM       = ' '
+ICON_DISK      = ' '
 ICON_CPU       = ' '
 ICON_DOWN      = ' '
 ICON_UP        = ''
@@ -102,9 +103,9 @@ def cpu():
             pack(' | ', COLOR_STD)
 
 def ram():
-    ram  = run(CMD_RAM).split('\n')
-    all  = ram[0].split()[1]
-    used = ram[1].split()[2]
+    ram  = run(CMD_RAM).split()
+    all  = ram[1]
+    used = ram[2]
     text = '{0}/{1}MB'.format(used, all)
     block(ICON_RAM, text, COLOR_STD)
 
@@ -114,7 +115,7 @@ def disk_root():
     dir    = tokens[-1]
     avail  = tokens[-3]
     text   = '{} {} free'.format(dir, avail)
-    block(ICON_RAM, text, COLOR_DISK)
+    block(ICON_DISK, text, COLOR_DISK)
 
 def brightness():
     brightness = run(CMD_BRIGHT)
@@ -214,7 +215,7 @@ def main():
     stdout.write('[')
     stdout.write('[],')
     while True:
-        for func in [temp, brightness, disk_root, online, battery, date_time, volume]:
+        for func in [cpu, temp, ram, brightness, disk_root, online, battery, date_time, volume]:
             try_catch(func)
         pack(' ', COLOR_SEPARATOR)
         stdout.write(dumps(BLOCKS) + ',')
