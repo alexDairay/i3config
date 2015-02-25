@@ -160,7 +160,6 @@ bar {
 	       background #333333
 	       statusline #ffffff
 	}
-	height 25
 }
 
 # Volume control
