@@ -160,12 +160,11 @@ bar {
 	       background #333333
 	       statusline #ffffff
 	}
-	height 25
 }
 
 # Volume control
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # brightness control
